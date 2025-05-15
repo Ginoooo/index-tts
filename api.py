@@ -14,6 +14,9 @@ from typing import Dict
 # import base64 # Not used in this version
 from pydantic import BaseModel
 
+from num.number import convert_tagged_string_to_spoken_chinese
+from num.process_tagged_string import add_ssml_tags
+
 app = FastAPI(title="IndexTTS API")
 
 # Initialize the TTS model
@@ -55,6 +58,9 @@ async def synthesize_speech(request: Request): # Use Request object to access pa
         return JSONResponse(status_code=400, content={"message": "'ref_audio_path' parameter is required."})
     if not text:
         return JSONResponse(status_code=400, content={"message": "'text' parameter is required."})
+    
+    text = add_ssml_tags(text)
+    text = convert_tagged_string_to_spoken_chinese(text)
 
     # Construct the full path to the prompt file
     prompt_path = os.path.join(prompts_dir, ref_audio_path)

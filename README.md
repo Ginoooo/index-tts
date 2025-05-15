@@ -165,7 +165,7 @@ PYTHONPATH=. python indextts/infer.py
 # Make sure pytorch has been installed before running this command
 pip install -e .
 indextts "大家好，我现在正在bilibili 体验 ai 科技，说实话，来之前我绝对想不到！AI技术已经发展到这样匪夷所思的地步了！" \
-  --voice reference_voice.wav \
+  --voice kunkunpro.wav \
   --model_dir checkpoints \
   --config checkpoints/config.yaml \
   --output output.wav

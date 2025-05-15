@@ -10,3 +10,5 @@ checkpoints/*.model
 checkpoints/.cache
 outputs/
 build/
+/tmp
+/prompts
